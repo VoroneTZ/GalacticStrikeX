@@ -1,3 +1,6 @@
+MATERIAL* matGlow = { effect = "object.fx"; } // a normalmapping + glow shader
+
+
 action AExplo()
 {
 
@@ -5,8 +8,9 @@ action AExplo()
   set(my, PASSABLE);
   set(my, TRANSLUCENT);
   //  set(my,BRIGHT);
-  my.red = 255;
-  my.green = 255;
+  //my.material = matGlow;
+  my.red = 1255;
+  my.green = 1255;
   my.blue = 255;
   my.lightrange = 120;
   my.alpha = 120;
@@ -84,6 +88,9 @@ function bl_part_func(PARTICLE *p)
 {
   p.bmap = bmp_b_part;
   p.size = 32;
+    p.blue = 100;
+  p.red = 0;
+  p.green = 400;
 
   p.x += 0;
   p.y += 0;
@@ -107,7 +114,8 @@ function gr_part_func(PARTICLE *p)
   p.bmap = bmp_b_part;
   p.size = 32;
   p.blue = 0;
-  p.red = 0;
+  p.red = 10;
+  p.green = 400;
 
   p.x += 0;
   p.y += 0;
@@ -223,6 +231,10 @@ function r_part_func(PARTICLE *p)
 {
   p.bmap = bmp_r_part;
   p.size = 32;
+   p.blue = 0;
+  p.red = 400;
+  p.green = 50;
+  
 
   p.x += 0;
   p.y += 0;

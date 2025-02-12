@@ -2,6 +2,9 @@
 #define PRAGMA_PATH "models";
 #define PRAGMA_PATH "images";
 #define PRAGMA_PATH "levels";
+#define PRAGMA_PATH "KPP"
+
+
 
 ///////////////////////////////
 #include <acknex.h>
@@ -15,6 +18,12 @@
 #include "pickups.c"
 #include "enemys.c"
 #include "embient.c"
+
+#define SSAA 4.0 // Enable supersampling? -> extremely slow, but good for screenshots ;)  -  if you want this, #define it before including KPP.c
+
+// Add the sub folder & include the scriptfile
+
+#include "KPP.c"
 
 
 
@@ -148,6 +157,7 @@ function FStart()
     FPlLife = 2;
     FBulletLvl = 1;
     FBulletType = 1;
+    FPlLifeType = 1;
     player.x = 0;
     player.y = 0;
     player.z = 0;
@@ -189,8 +199,12 @@ function main()
   video_mode = 12;
   panel_red.alpha = 0;
   video_screen = 1;
-  d3d_antialias = 1;
-  shadow_stencil = 3;
+  
+  d3d_mipmapping = 4;
+  shadow_stencil = -1;
+  d3d_triplebuffer = 1;
+  d3d_anisotropy = 7;
+  d3d_antialias = 9;
   fps_max = 60;
   wait(1);
   panel_vtz.alpha = 0;
@@ -215,8 +229,10 @@ function main()
     wait(1);
   }
   wait(1);
-
+  KPP_Enable(); 
+wait(1);
   set_start_screen();
+  
 
 
 

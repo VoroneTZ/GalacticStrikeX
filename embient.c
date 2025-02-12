@@ -1,7 +1,12 @@
+#include "effekts.c"
+#include "KPP.c"
+
+
 action ASky()
 {
   set(my, TRANSLUCENT);
   set(my, PASSABLE);
+
   while (1)
   {
     my.roll -= 0.01 * my.skill1 * time_step;

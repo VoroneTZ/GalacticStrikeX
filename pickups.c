@@ -1,14 +1,23 @@
+#include "effekts.c"
+#include "KPP.c"
+
 action AAmmo1()
 {
   set(my, PASSABLE);
   wait(2);
+    my.material = matGlow;
+	my.red = 32;
+	my.green = 1200;
+	my.blue = 844;
+	my.ambient = 25;
+	
   my.scale_x = 3;
   my.scale_y = 3;
   my.scale_z = 3;
   my.skill1 = 1;
   var pan = 0;
   var pandir = 1;
-  while ((my.skill1 > 0) && (my.y > -100) )
+  while ((my.skill1 > 0) && (my.y > -300) )
   {
     if (pan > 20) {
       pandir = 1;
@@ -24,7 +33,7 @@ action AAmmo1()
     }
     c_move(me, nullvector, vector(pan - 10, -30 * time_step, 0), IGNORE_MODELS | IGNORE_PASSABLE | IGNORE_PUSH);
     my.pan += 10 * time_step;
-    if (vec_dist(my.x, player.x) < 50) {
+    if (vec_dist(my.x, player.x) < 70) {
       my.skill1 = 0;
       snd_play(SNDradar, 70, 0);
       if (FBulletLvl < 4) {
@@ -45,13 +54,18 @@ action AAmmo2()
 {
   set(my, PASSABLE);
   wait(2);
+      my.material = matGlow;
+	my.red = 1200;
+	my.green = 200;
+	my.blue = 100;
+	my.ambient = 25;
   my.scale_x = 3;
   my.scale_y = 3;
   my.scale_z = 3;
   my.skill1 = 1;
   var pan = 0;
   var pandir = 1;
-  while ((my.skill1 > 0) &&  (my.y > -100)  )
+  while ((my.skill1 > 0) &&  (my.y > -300)  )
   {
     if (pan > 20) {
       pandir = 1;
@@ -67,7 +81,7 @@ action AAmmo2()
     }
     c_move(me, nullvector, vector(pan - 10, -30 * time_step, 0), IGNORE_MODELS | IGNORE_PASSABLE | IGNORE_PUSH);
     my.pan += 10 * time_step;
-    if (vec_dist(my.x, player.x) < 50) {
+    if (vec_dist(my.x, player.x) < 70) {
       my.skill1 = 0;
       snd_play(SNDradar, 70, 0);
       if (FBulletLvl < 4) {
@@ -90,13 +104,18 @@ action AHeal()
 {
   set(my, PASSABLE);
   wait(2);
+      my.material = matGlow;
+	my.red = 160;
+	my.green = 1920;
+	my.blue = 2320;
+	my.ambient = 25;
   my.scale_x = 3;
   my.scale_y = 3;
   my.scale_z = 3;
   my.skill1 = 1;
   var pan = 0;
   var pandir = 1;
-  while ((my.skill1 > 0) && (my.y > -100)  )
+  while ((my.skill1 > 0) && (my.y > -300)  )
   {
     if (pan > 20) {
       pandir = 1;
@@ -112,7 +131,7 @@ action AHeal()
     }
     c_move(me, nullvector, vector(pan - 10, -30 * time_step, 0), IGNORE_MODELS | IGNORE_PASSABLE | IGNORE_PUSH);
     my.pan += 10 * time_step;
-    if (vec_dist(my.x, player.x) < 50) {
+    if (vec_dist(my.x, player.x) < 70) {
       my.skill1 = 0;
       snd_play(SNDheal, 20, 0);
       if (FPlLifeType == 2) {

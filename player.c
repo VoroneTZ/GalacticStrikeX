@@ -1,5 +1,6 @@
 #include "vars.c"
 #include "effekts.c"
+#include "KPP.c"
 
 
 function Bullet1Event()
@@ -145,6 +146,11 @@ action Ap1()
     wait(1);
   }
   wait(1);
+  	my.material = matGlow;
+	my.red = 400;
+	my.green = 400;
+	my.blue = 100;
+	my.ambient = 25;
   set(my, PASSABLE);
   set(my, INVISIBLE);
   my.pan = player.pan;
@@ -158,6 +164,11 @@ action Ap2()
     wait(1);
   }
   wait(1);
+   my.material = matGlow;
+	my.red = 800;
+	my.green = 800;
+	my.blue = 200;
+	my.ambient = 25;
   set(my, PASSABLE);
   set(my, INVISIBLE);
   my.pan = player.pan;
@@ -209,6 +220,7 @@ action Aplayer()
 
   while (1)
   {
+  	  KPP_ZoomBlurStrength = FHitTimer/2;
     my.roll=0;
     panel_red.alpha = FHitTimer;
     if (FHitTimer > 0) {
