@@ -213,12 +213,14 @@ action Enemy1()
   var ltimer = 0;
   while ((FStartGame == 1) && (my.skill1 > 0) && (my.y > -500) )
   {
+  
     c_move(me, vector(15 * time_step, 0, 0), nullvector, GLIDE | IGNORE_PASSABLE | IGNORE_PUSH);
     ltimer += time_step;
 
     if (ltimer > 35 - (FBulletLvl * 3) - (FPlLifeType * 4))
     {
-
+		reset(my, PASSABLE);
+  reset(my, INVISIBLE);
       LBullet = ent_create("bolt.mdl", my.x, ABlt1);
       vec_to_angle(LBullet.pan, vec_diff(NULL, player.x, my.x));
       ltimer = 0;
@@ -235,7 +237,7 @@ action Enemy1()
   set(my, INVISIBLE);
   if  (!(my.eflags & CLIPPED))
     ent_create("effekt_a.mdl", my.x, AExplo);
-  // wait(-1);
+   wait(-5);
   ent_remove(me);
 
 }
@@ -277,7 +279,7 @@ action Enemy2()
   set(my, INVISIBLE);
   if  (!(my.eflags & CLIPPED))
     ent_create("effekt_a.mdl", my.x, AExplo);
-  // wait(-1);
+   wait(-5);
   ent_remove(me);
 
 }
